@@ -1,0 +1,177 @@
+<odoo>
+  <data>
+    <record id="student_menu_action" model="ir.actions.act_window">        	
+      <field name="name">Students</field>        	
+      <field name="res_model">student.student</field>        	
+      <field name="view_type">form</field>        	
+      <field name="view_mode">tree,form</field>        	
+      <field name="domain">[]</field>        	
+      <field name="help" type="html">            	
+        <p class="oe_view_nocontent_create">Create The First Student            	
+        </p>        	
+      </field>
+    </record>
+    <menuitem id="school_menu" 
+      name="School" 
+      sequence="3"
+      action="student_menu_action"
+      web_icon="school,static/description/icon.png"/>    	
+    <menuitem id="school_student_menu" parent="school_menu" name="Student" action="student_menu_action" />
+     
+      
+    <record id="student_tree_view" model="ir.ui.view">
+      <field name="name">Student Tree</field>
+      <field name="model">student.student</field>
+      <field name="arch" type="xml">
+        <tree string="Students">
+          <field name="name"/>
+          <field name="age"/>
+          <field name="gender"/>
+          <field name="student_blood_group"/>
+          <field name="nationality"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record id="student_free_view" model="ir.ui.view">
+      <field name="name">Student Form</field>
+      <field name="model">student.student</field>
+      <field name="arch" type="xml">
+        <form string="Student">
+          <sheet>
+            <field name="photo" widget="image" class="oe_left oe_avatar" />
+              <div class="oe_title">
+                <h3>
+                  <field name="name"/>
+                </h3>
+              </div>
+          <group>
+            <group>
+              <field name="age"/>
+              <field name="gender"/>
+            </group>
+            <group>
+              <field name="student_dob"/>
+              <field name="student_blood_group"/>
+              <field name="nationality"/>
+            </group>
+          </group>
+          </sheet>
+
+          <div class = "oe_chatter">
+            <field name = "message_follower_ids" widget = "mail_followers" />
+            <field name = "message_ids" widget = "mail_thread" />
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="student_search_view" model="ir.ui.view">
+      <field name="name">Students Search View</field>
+      <field name="model">student.student</field>
+      <field name="arch" type="xml">
+        <search string="Search Student">
+          <field name="name"/>
+          <field name="age"/>
+          <field name="nationality"/>
+          <filter string="Male" name="male" domain="[('gender','=','male')]" help="Students with gender as Male"/>
+          <filter string="Female" name="female" domain="[('gender','=','female')]" help="Students with gender as Female"/>
+          <filter string="Others" name="others" domain="[('gender','=','others')]" help="Students with gender as Others"/>
+            <group expand="1" string="Group By">
+              <filter string="Nationality" name="nationality" context="{'group_by':'nationality'}"/>
+              <filter string="Blood Group" name="blood_group" context="{'group_by':'student_blood_group'}"/>
+            </group>
+        </search>   
+      </field>
+    </record> 
+
+    <!-- <tree string="Idea list">
+      <field name="name"/>
+    </tree> -->
+
+
+    <!-- <record model="ir.ui.view" id="view_id">
+    <field name="name">view.name</field>
+    <field name="model">object_name</field>
+    <field name="priority" eval="16"/></field>
+    <field name="arch" type="xml"></field>
+    </record> -->
+
+
+
+    <!-- <record model="academy_1.academy_1" id="academy_1.course_1">
+      <field name="name">course 1</field>
+      <field name="description"> Raznay hren 1</field>
+    </record>
+    <record model="academy_1.academy_1" id="academy_1.course_2">
+      <field name="name">course 2</field>
+      <field name="description"> Raznay hren 2</field>
+    </record>
+    <record model="academy_1.academy_1" id="academy_1.course_3">
+      <field name="name">course 3</field>
+      <field name="description"> Raznay hren 3</field>
+    </record>
+
+    <menuitem id="menu_ideas" parent="menu_root" name="Ideas" sequence="10"
+      action="academy_1.course_1"/> -->
+
+
+    
+    
+    <!-- <record model="ir.ui.view" id="academy_1.list">
+      <field name="name">academy_1 list</field>
+      <field name="description">academy_1.academy_1</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record> -->
+   
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="academy_1.action_window">
+      <field name="name">academy_1 window</field>
+      <field name="res_model">academy_1.academy_1</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="academy_1.action_server">
+      <field name="name">academy_1 server</field>
+      <field name="model_id" ref="model_academy_1_academy_1"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="academy_1" id="academy_1.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="academy_1.menu_1" parent="academy_1.menu_root"/>
+    <menuitem name="Menu 2" id="academy_1.menu_2" parent="academy_1.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="academy_1.menu_1_list" parent="academy_1.menu_1"
+              action="academy_1.action_window"/>
+    <menuitem name="Server to list" id="academy_1" parent="academy_1.menu_2"
+              action="academy_1.action_server"/>
+    -->
+  </data>
+</odoo>
