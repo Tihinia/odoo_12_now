@@ -1,0 +1,173 @@
+<odoo>
+  <data>
+    <!-- Открытие приложения -->
+    <record id="table_menu_action" model="ir.actions.act_window">        	
+      <field name="name">Управление табелями</field>        	
+      <field name="res_model">index_table.index_table</field>        	
+      <field name="view_type">form</field>        	
+      <field name="view_mode">tree,form</field>        	
+      <field name="domain">[]</field>        	
+      <field name="help" type="html">     
+           	
+        <p class="oe_view_nocontent_create">В базе данных отсутствуют табели          	
+        </p>        	
+      </field>
+    </record>
+    <!-- Настройка отоброжения меню главного листа  -->
+    <menuitem id="table_menu" name="Табель" action="table_menu_action"/>
+    <menuitem id="table_now_menu" parent="table_menu" name="Управление табелями" action="table_menu_action"/>
+    <!-- отоброжения представления tree главного листа  -->
+    <record id = "table_tree_view" model = "ir.ui.view">
+      <field name = "name">Table Tree</field>
+      <field name = "model">table.table</field>
+      <field name = "arch" type = "xml">
+        <tree string = "Табели">         
+          <field name="create_date" string='Дата создания'/>
+          <field name="write_date" string='Дата последней корректировки'/>
+          <field name = "person_name" />
+          <field name = "otdel" />
+          <field name = "reporting_period_month" />
+          <field name = "reporting_period_year" />
+          <field name = "description" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Отоброжение представления tree для списка табедлей -->
+    <record id = "table_tree_view_now" model = "ir.ui.view">
+      <field name = "name">Table Tree now</field>
+      <field name = "model">index_table.index_table</field>
+      <field name = "arch" type = "xml">
+        <tree string = "Табель рабочего времени">         
+          <field name="familiy"/>
+          <field name="imiy"/>
+          <field name = "otchestvo" />
+          <field name = "tabel_nomer" />
+          <field name = "kolvo_otrab_chas" />
+          <field name = "kolvo_otrab_dnei" />
+        </tree>
+      </field>
+    </record>
+    <record id="table_free_view" model="ir.ui.view">
+      <field name="name">Табель сотрудника</field>
+      <field name="model">index_table.index_table</field>
+      <field name="arch" type="xml">
+        <form string="Сотрудник">
+          <sheet>
+          <group>
+            <group string='Данные сотрудника'>
+              <field name="familiy"/>
+              <field name="imiy"/>
+              <field name="otchestvo"/>
+              <field name="doljnost"/>
+              <field name="tabel_nomer"/>
+            </group>
+            <group string='Фактически отработано'>
+              <field name="kolvo_otrab_dnei"/>
+              <field name="kolvo_otrab_chas"/>
+            </group>
+            <group col = "10" colspan = "10">
+              <field name="den_1"/>
+              <field name="den_2"/>
+              <field name="den_3"/>
+              <field name="den_4"/>
+              <field name="den_5"/>
+              <field name="den_6"/>
+              <field name="den_7"/>
+              <field name="den_8"/>
+              <field name="den_9"/>
+              <field name="den_10"/>
+              <field name="den_11"/>
+              <field name="den_12"/>
+              <field name="den_13"/>
+              <field name="den_14"/>
+              <field name="den_15"/>
+              <field name="den_16"/>
+              <field name="den_17"/>
+              <field name="den_18"/>
+              <field name="den_19"/>
+              <field name="den_20"/>
+              <field name="den_21"/>
+              <field name="den_22"/>
+              <field name="den_23"/>
+              <field name="den_24"/>
+              <field name="den_25"/>
+              <field name="den_26"/>
+              <field name="den_27"/>
+              <field name="den_28"/>
+              <field name="den_29"/>
+              <field name="den_30"/>
+              <field name="den_31"/>
+            </group>
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+
+          <!-- <field name = "den_1" />
+          <field name = "den_2" />
+          <field name = "den_3" />
+          <field name = "den_4" />
+          <field name = "den_5" /> -->
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="table.list">
+      <field name="name">table list</field>
+      <field name="model">table.table</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="table.action_window">
+      <field name="name">table window</field>
+      <field name="res_model">table.table</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="table.action_server">
+      <field name="name">table server</field>
+      <field name="model_id" ref="model_table_table"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="table" id="table.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="table.menu_1" parent="table.menu_root"/>
+    <menuitem name="Menu 2" id="table.menu_2" parent="table.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="table.menu_1_list" parent="table.menu_1"
+              action="table.action_window"/>
+    <menuitem name="Server to list" id="table" parent="table.menu_2"
+              action="table.action_server"/>
+    -->
+  </data>
+</odoo>

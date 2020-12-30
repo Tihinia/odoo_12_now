@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "table",
+    'name': "Табель рабочего времени",
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+    'summary': """ Табелирование рабочего времени""",
 
-    'description': """
-        Long description of module's purpose
-    """,
+    'description': """ Создание и загрузка табелей времени рабочих и ИТР. 
+    Сравнение предоставленных табелей с выгрузкой из СКУД. 
+    Просмотр и архивация информации из СКУД""",
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Тихиня Владимир Владимирович",
+    'website': "",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Uncategorized',
+    'category': 'Tools',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
@@ -24,12 +22,24 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'security/ir.model.access.csv',
+        'views/index_views.xml',
+        # 'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+    'images':[],
+    'external_dependencies': {
+        'python': [
+            'xlrd',
+            'xlwt',
+            'openpyxl',
+        ],
+    },
+    'license':'AGPL-3',
+    'installable':True,
+    'application':False,
+    'auto_install':False,
 }
