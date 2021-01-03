@@ -40,8 +40,8 @@
       <field name = "arch" type = "xml">
         <tree string = "Табель рабочего времени">         
           <field name="familiy"/>
-          <field name="imiy"/>
-          <field name = "otchestvo" />
+          <!-- <field name="imiy"/>
+          <field name = "otchestvo" /> -->
           <field name = "tabel_nomer" />
           <field name = "kolvo_otrab_chas" />
           <field name = "kolvo_otrab_dnei" />
@@ -57,8 +57,8 @@
           <group>
             <group string='Данные сотрудника'>
               <field name="familiy"/>
-              <field name="imiy"/>
-              <field name="otchestvo"/>
+              <!-- <field name="imiy"/>
+              <field name="otchestvo"/> -->
               <field name="doljnost"/>
               <field name="tabel_nomer"/>
             </group>

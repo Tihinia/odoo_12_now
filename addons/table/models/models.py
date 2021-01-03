@@ -17,9 +17,9 @@ class table(models.Model):
 
 class indextable(models.Model):
     _name = 'index_table.index_table'
-    familiy=fields.Char(string='Фамилия')
-    imiy=fields.Char(string='Имя')
-    otchestvo=fields.Char(string='Отчество')
+    familiy=fields.Many2one('hr.employee')
+    # imiy=fields.Char(string='Имя')
+    # otchestvo=fields.Char(string='Отчество')
     doljnost=fields.Char(string='Должность')
     kolvo_otrab_dnei=fields.Integer(string='Количество отработанных дней')
     kolvo_otrab_chas=fields.Float(string='Количество отработанных часов',digits = (1,1))
